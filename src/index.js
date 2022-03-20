@@ -7,6 +7,12 @@ const server = new ApolloServer({
       world: String
     }
   `,
+  resolvers: {
+    Query: {
+      hello: () => 'Hello world!',
+      world: () => 'Hello world!',
+    },
+  },
 });
 
 server.listen(4003).then(({ url }) => {
