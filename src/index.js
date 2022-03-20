@@ -1,1 +1,14 @@
-console.log('Hello World');
+import { ApolloServer, gql } from 'apollo-server';
+
+const server = new ApolloServer({
+  typeDefs: gql`
+    type Query {
+      hello: String
+      world: String
+    }
+  `,
+});
+
+server.listen(4003).then(({ url }) => {
+  console.log(`🚀  Server ready at ${url}`);
+});
