@@ -8,6 +8,11 @@ export const userTypeDefs = gql`
 
 	type User {
 		id: ID!
-		name: String!
+		firstName: String!
+		lastName: String!
+		userName: String!
+		indexRef: Int!
+		createAt: String!
+		# posts: [Post!]
 	}
 `;
