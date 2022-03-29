@@ -12,7 +12,7 @@ export const userTypeDefs = gql`
 		lastName: String!
 		userName: String!
 		indexRef: Int!
-		createAt: String!
+		createdAt: String!
 		# posts: [Post!]
 	}
 `;

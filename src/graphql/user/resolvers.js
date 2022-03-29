@@ -1,20 +1,12 @@
-const user = () => {
-	return {
-		id: '1',
-		name: 'John Doe',
-	};
+const users = async (_, __, { axios }) => {
+	const { data } = await axios.get('http://localhost:3000/users');
+	return data;
 };
 
-const users = () => [
-	{
-		id: '1',
-		name: 'John Doe',
-	},
-	{
-		id: '2',
-		name: 'Jane Doe',
-	},
-];
+const user = async (_, __, { axios }) => {
+	const { data } = await axios.get('http://localhost:3000/users/602');
+	return data;
+};
 
 export const userResolvers = {
 	Query: {
