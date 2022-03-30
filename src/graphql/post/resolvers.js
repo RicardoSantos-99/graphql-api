@@ -13,7 +13,11 @@ const posts = () => {
 		},
 		{
 			id: 'post-2',
-			title: 'Post 1',
+			title: 'Post 2',
+		},
+		{
+			id: 'post-3',
+			title: 'Post 3',
 		},
 	];
 };
