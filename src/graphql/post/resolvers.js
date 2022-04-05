@@ -11,4 +11,10 @@ export const postResolvers = {
 		post,
 		posts,
 	},
+	Post: {
+		unixTimestamp: ({createdAt}) => {
+			const date = new Date(createdAt).getTime() / 1000
+			return Math.floor(date)
+		}
+	}
 };
