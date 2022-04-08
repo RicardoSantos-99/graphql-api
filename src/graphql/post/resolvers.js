@@ -1,9 +1,11 @@
-const posts = (_, __, { getPosts }) => {
-	return getPosts();
-};
-
 const post = (_, { id }, { getPosts }) => {
 	return getPosts('/' + id);
+};
+
+const posts = (_, { input }, { getPosts }) => {
+	const apiFiltersInput = new URLSearchParams(input);
+
+	return getPosts('/?' + apiFiltersInput);
 };
 
 export const postResolvers = {
