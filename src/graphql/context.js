@@ -12,8 +12,13 @@ export const context = () => {
 
 		getPosts: async (path = '/') => {
 			const url = apiUrl + '/posts' + path;
-			const { data } = await axios.get(url);
-			return data;
+
+			try {
+				const { data } = await axios.get(url);
+				return data;
+			} catch (error) {
+				return error.response.data;
+			}
 		},
 	};
 };
