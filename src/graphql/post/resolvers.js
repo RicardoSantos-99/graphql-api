@@ -10,6 +10,11 @@ const posts = (_, { input }, { getPosts }) => {
 	return getPosts('/?' + apiFiltersInput);
 };
 
+const user = async ({ userId }, _, { getUsers }) => {
+	return await getUsers('/' + userId);
+};
+
 export const postResolvers = {
 	Query: { post, posts },
+	Post: { user },
 };
