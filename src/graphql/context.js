@@ -1,24 +1,12 @@
 import axios from 'axios';
-
-const apiUrl = 'http://localhost:3000';
+import { getUsers } from './user/utils';
+import { getPosts } from './post/utils';
+import { makeUserDataLoader } from './user/dataloaders';
 
 export const context = () => {
 	return {
-		getUsers: async (path = '/') => {
-			const url = apiUrl + '/users' + path;
-			const { data } = await axios.get(url);
-			return data;
-		},
-
-		getPosts: async (path = '/') => {
-			const url = apiUrl + '/posts' + path;
-
-			try {
-				const { data } = await axios.get(url);
-				return data;
-			} catch (error) {
-				return error.response.data;
-			}
-		},
+		userDataLoader: makeUserDataLoader(getUsers(axios)),
+		getUsers: getUsers(axios),
+		getPosts: getPosts(axios),
 	};
 };

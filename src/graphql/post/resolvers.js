@@ -1,6 +1,3 @@
-import DataLoader from 'dataloader';
-import axios from 'axios';
-
 const post = async (_, { id }, { getPosts }) => {
 	const post = await getPosts('/' + id);
 
@@ -13,17 +10,7 @@ const posts = (_, { input }, { getPosts }) => {
 	return getPosts('/?' + apiFiltersInput);
 };
 
-const userDataLoader = new DataLoader(async (ids) => {
-	const urlQuery = ids.join('&id=');
-
-	const url = 'http://localhost:3000/users?id=' + urlQuery;
-
-	const { data: users } = await axios.get(url);
-
-	return ids.map((id) => users.find((user) => user.id === id));
-});
-
-const user = async ({ userId }, _, { getUsers }) => {
+const user = async ({ userId }, _, { userDataLoader }) => {
 	return userDataLoader.load(userId);
 };
 
