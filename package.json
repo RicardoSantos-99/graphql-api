@@ -8,6 +8,7 @@
         "server": "json-server --watch db.json"
     },
     "dependencies": {
+        "apollo-datasource-rest": "^3.5.2",
         "apollo-server": "^3.6.4",
         "apollo-server-core": "^3.6.7",
         "axios": "^0.26.1",

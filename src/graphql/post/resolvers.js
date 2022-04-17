@@ -1,13 +1,9 @@
-const post = async (_, { id }, { getPosts }) => {
-	const post = await getPosts('/' + id);
-
-	return post;
+const post = async (_, { id }, { dataSources }) => {
+	return dataSources.postApi.getPost(id);
 };
 
-const posts = (_, { input }, { getPosts }) => {
-	const apiFiltersInput = new URLSearchParams(input);
-
-	return getPosts('/?' + apiFiltersInput);
+const posts = (_, { input }, { dataSources }) => {
+	return dataSources.postApi.getPosts(input);
 };
 
 const user = async ({ userId }, _, { userDataLoader }) => {
